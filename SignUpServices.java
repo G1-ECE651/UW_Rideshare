@@ -6,6 +6,7 @@
 package UWRideshare.services;
 
 import UWRideshare.beans.DriverBean;
+import UWRideshare.db.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,17 +21,16 @@ public class SignUpServices {
         Connection conn=null;
         PreparedStatement pstmt=null;
         try
-        {
+        {  
             conn=DBConnection.connect();
-            pstmt=conn.prepareStatement("insert into drivermaster (email,name,contact,password,status,signup,feedback) values (?,?,?,?,?,?,?)");
+            pstmt=conn.prepareStatement("insert into drivermaster (email,name,contact,password,status,signup,verified) values (?,?,?,?,?,?,?)");
             pstmt.setString(1, objbean.getEmail());
             pstmt.setString(2, objbean.getName());
             pstmt.setString(3, objbean.getContact());
             pstmt.setString(4, objbean.getPassword());
             pstmt.setBoolean(5, objbean.isStatus());
             pstmt.setString(6, objbean.getSignup());
-            pstmt.setString(7, objbean.getFeedback());
-           // pstmt.setBoolean(8, objbean.isVerified());
+           pstmt.setBoolean(7, objbean.isVerified());
            int a=pstmt.executeUpdate();
            if(a>0)
            {
@@ -62,10 +62,15 @@ public class SignUpServices {
         ResultSet rs = null;
         try {
             conn = DBConnection.connect();
+            System.out.println(email);
             pstmt = conn.prepareStatement("select userid from drivermaster where email=?");
             pstmt.setString(1, email);
             rs = pstmt.executeQuery();
             if(rs.next())
+            {
+                return true;
+            }
+            else
             {
                 return false;
             }
@@ -80,7 +85,7 @@ public class SignUpServices {
                 System.out.println(e);
             }
         }
-        return true;
+        return false;
     }
     
     public static String returnMobile(String email) {
@@ -112,7 +117,6 @@ public class SignUpServices {
                 System.out.println(e);
             }
         }
-        System.out.println(mobile);
         return mobile;
     }
     
