@@ -11,7 +11,25 @@ package UWRideshare.beans;
  */
 public class RideBean {
      private int rideid,userid,seats;
-    private String source ,destination,path,datetime;
+     private double cost;
+     
+    private String source ,destination,path,datetime,carname;
+
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+    public String getCarname() {
+        return carname;
+    }
+
+    public void setCarname(String carname) {
+        this.carname = carname;
+    }
     private boolean status;
 
     public int getRideid() {
