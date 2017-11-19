@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/theme-yellow.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/animate.css" />
-	 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700">
+	 <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700"> 
 	
   </head>
   
@@ -23,12 +23,15 @@
 			</div>
 			<nav role="navigation" class="main-nav">
 				<ul>
-					<li><a href="index.html" title="">Home</a></li>									
+					<li><a href="index.html" title="">Home</a></li>
+					
+					<li><a href = "login.html" title = "">Login</a></li>
 					<li><a href="contact.html" title="Contact">Contact</a></li>
 					
 					
 				</ul>
 			</nav>
+			
 			
 		</div>
 	</header>
@@ -40,13 +43,13 @@
 		<header class="site-title color">
 			<div class="wrap">
 				<div class="container">
-					<h1>Login</h1>
-					<nav role="navigation" class="breadcrumbs">
+					<h1>Activate your account</h1>
+					<!--<nav role="navigation" class="breadcrumbs">
 						<ul>
 							<li><a href="index.html" title="Home">Home</a></li>
 							<li>Login</li>
 						</ul>
-					</nav>
+					</nav>-->
 				</div>
 			</div>
 		</header>
@@ -57,33 +60,22 @@
 				<!--- Content -->
 				<div class="content one-half modal">
 					<!--Login-->
-					<div class="box">
+					<div class="box"><h2 style = "text-align: center;">Account Verification<img style = "padding-left:10px;"src = "logos/acc_vef.png"/></h2> 
 						<form>
-							<div class="f-row">
-								<div class="full-width">
-									<label for="username">Your username</label>
-									<input type="text" id="username" />
+							<div class="f-row" >
+								<div class="full-width" style = "text-align:center;">
+									<h4>Send OTP to:</h4>
+							</div>
+							<div class = "full-width">	
+									<input type="submit" id="email" value="Email" class = "btn color medium" style="margin-left:15%;" />  <input type="submit" id="phone" value="Phone Number" class = "btn color medium" style = "margin-left:12%;"/>
 								</div>
 							</div>
 							<div class="f-row">
 								<div class="full-width">
-									<label for="password">Your password</label>
-									<input type="password" id="password" />
+									<label for="password">Enter OTP here:</label>
+									<input type="text" id="otp" />
 								</div>
-									
-							<div class = "imgContainer">
-							
-							<h3 style = "text-align:center; padding-top:20%;">You can also login using Facebook or Google</h3>
-									<div class = "imgContent">
-										<a target="_blank" href= "https://www.facebook.com"><img src="logos/fb_logo.png" alt="facebook" width ="80px" height = "80px" style = "margin-left:30%;"  /> </a>
-										
-										
-										<a  target= "_blank" href="https://accounts.google.com/ServiceLogin">
-										<img src = "logos/google_logo.png" alt = "google" width = "80px" height = "80px" style= "margin-left:10%"/> </a>
-									</div>	
-								</div>	
 							</div>
-							
 							<!--<div class="f-row">
 								<div class="full-width check">
 									<input type="checkbox" id="checkbox" />
@@ -96,7 +88,7 @@
 								</div>
 							</div>
 							
-							<p><a href="#">Forgotten password?</a><br />Dont have an account yet? <a href="register.html">Sign up</a>.</p>
+							<p>Haven't received OTP?<br /><a href="#">Click here</a> to resend OTP.</p>
 						</form>
 					</div>
 					<!--//Login-->

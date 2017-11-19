@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/theme-yellow.css" />
 	<link rel="stylesheet" href="css/style.css" />
 	<link rel="stylesheet" href="css/animate.css" />
-	<!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700">-->
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700">
 	
 
     
@@ -22,9 +22,17 @@
 			<div class="logo">
 				<a href="index.html" title="Transfers"><img src="logos/uwlogo.png" width = "40px" height = "40px" alt="" />UWRideShare</a>
 			</div>
-			<!-- //Logo -->
-			
-			
+			<nav role="navigation" class="main-nav">
+				<ul>
+					<li><a href="index.html" title="">Home</a></li>
+					
+					<li><a href = "login.html" title = "">Login</a></li>
+					<li><a href="contact.html" title="Contact">Contact</a></li>
+					
+					
+				</ul>
+			</nav>
+			<!-- //Logo -->						
 			<!-- //Main Nav -->
 		</div>
 	</header>
@@ -34,7 +42,9 @@
 	<main class="main" role="main">
 		<!-- Page info -->
 		<header class="site-title color">
+		
 			<div class="wrap">
+			
 				<div class="container">
 					<h1>Register</h1>
 					<nav role="navigation" class="breadcrumbs">
@@ -58,20 +68,26 @@
 							<div class="f-row">
 								<div class="full-width">
 									<label for="name">Your name and surname</label>
-									<input type="text" id="name" />
+									<input type="text" id="name" required />
 								</div>
 							</div>
 							<div class="f-row">
 								<div class="full-width">
 									<label for="email">Your email address</label>
-									<input type="email" id="email" />
+									<input type="email" id="email"required />
 								</div>
-							</div>							
+							</div>
+							<div class="f-row">
+								<div class="full-width">
+									<label for="phone">Your Phone number</label>
+									<input type="number" id="phone"  required />
+								</div>
+							</div>								
 							<div class = "f-row"
 							<div class="f-row">
 								<div class="full-width">
 									<label for="password">Your password</label>
-									<input type="password" id="password" />
+									<input type="password" id="password" required />
 								</div>
 							</div>
 							<div class="f-row">
@@ -86,17 +102,17 @@
 								<h4 style = "text-align:center;">You can sign up using Facebook/Google </h4>
 								<div class = "imgContainer">
 									<div class = "imgContent">
-										<a target="_blank" href= "https://www.facebook.com"><img src="logos/fb_logo.png" alt="facebook" width ="80px" height = "80px" style = "margin-left:40px; margin-right:40px;"  /> </a>
+										<a target="_blank" href= "https://www.facebook.com"><img src="logos/fb_logo.png" alt="facebook" width ="80px" height = "80px" style = "margin-left:30%;"  /> </a>
 										
 										
 										<a  target= "_blank" href="https://accounts.google.com/ServiceLogin">
-										<img src = "logos/google_logo.png" alt = "google" width = "80px" height = "80px" style= "margin-left:40px; margin-right:40px;"/> </a>
+										<img src = "logos/google_logo.png" alt = "google" width = "80px" height = "80px" style= "margin-left:10%"/> </a>
 									</div>	
 								</div>
 							</div>					
 							<div class="f-row">
 								<div class="full-width check">
-									<input type="checkbox" id="checkbox" />
+									<input type="checkbox" id="checkbox" required />
 									<label for="checkbox">I agree with terms and conditions.</label>
 								</div>
 								

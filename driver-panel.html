@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<title>Driver Panel</title>
+	
+	<link rel="stylesheet" href="css/theme-yellow.css" />
+	<link rel="stylesheet" href="css/style.css"  />
+	<link rel="stylesheet" href="css/animate.css" />	
+	<link rel ="stylesheet" href = "css/jquery-ui.css"/>
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+	<link rel= "stylesheet" href = "modal.css">
+	
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700">
+	
+
+  </head>
+  
+  <body>
+    <!-- Header -->
+	<header class="header" role="banner">
+		<div class="wrap">
+			<!-- Logo -->
+			<div class="logo">
+					<a href="index.html" title="Transfers"><img src="logos/uwlogo.png" width = "40px" height = "40px"alt="Transfers" />UWRideshare</a>
+				</div>
+			<!-- //Logo -->
+			
+			<!-- Main Nav -->
+			<nav role="navigation" class="main-nav">
+				<ul>
+					<li><a href="index.html" title="">Home</a></li>									
+					<li><a href="contact.html" title="Contact">Contact</a></li>
+					
+					
+				</ul>
+			</nav>
+			<!-- //Main Nav -->
+		</div>
+	</header>
+	<!-- //Header -->
+	
+	<!-- Main -->
+	<main class="main" role="main">
+		<!-- Page info -->
+		<header class="site-title color">
+			<div class="wrap">
+				<div class="container">
+					<h1>Welcome, </h1>
+					<nav role="navigation" class="breadcrumbs">
+						<ul>
+							<li><a href="index.html" title="Home">Home</a></li>
+							<li>Driver Panel</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<!-- //Page info -->
+		
+		
+		<div class="wrap">
+			<div class="row">				
+				<!--- Content -->
+				
+					<div id="myModal" class = "modal">
+					
+						<div class = "modal-content" >
+							<form>
+								<div  class = "modal-header" style= "text-align:center;">
+								 <span class="close">&times;</span>
+									<h3 style ="padding-top:10px;">PLEASE FILL IN THE RIDE DETAILS</h3>
+								</div>			
+								
+							<div class="modal-body">
+							<br>
+							
+							<label>Departure Date</label>
+									<input type="text" id="datepicker" required />
+							<br>
+							
+							<label>Departure Time</label>
+							<select required >
+								<option></option>
+								<option value= "5am">5:00AM</option>
+								<option value= "6am">6:00AM</option>
+								<option value= "7am">7:00AM</option>
+								<option value= "8am">8:00AM</option>
+								<option value= "9am">9:00AM</option>
+								<option value= "10am">10:00AM</option>
+								<option value= "11am">11:00AM</option>
+								<option value= "12pm">12:00PM</option>
+								<option value= "1pm">1:00PM</option>
+								<option value= "2pm">2:00PM</option>
+								<option value= "3pm">3:00PM</option>
+								<option value= "4pm">4:00PM</option>
+								<option value= "5pm">5:00PM</option>
+								<option value= "6pm">6:00PM</option>
+								<option value= "7pm">7:00PM</option>
+								<option value= "8pm">8:00PM</option>	
+							</select>
+							<br>							
+							<br>
+							<label>From</label>
+									<select required>
+										<option selected>&nbsp;</option>								
+										<option value="Toronto">Toronto</option>										
+										<option value="Mississauga">Mississauga</option>				
+										<option value="Ottawa">Ottawa</option>
+										<option value="Burlington">Burlington</option>
+										<option value="St.Catharines">St. Catharines</option>
+										<option value="Stratfor">Stratford</option>
+										<option value="Hamilton">Hamilton</option>									
+										<option value="London">London</option>
+										<option value="Vaughan">Vaughan</option>
+										<option value="Windsor">Windsor</option>										
+										<option value="Brampton">Brampton</option>										
+										<option value="Markham">Markham</option>
+										<option value="Kitchener">Kitchener</option>
+										<option value="Guelph">Guelph</option>					
+										<option value="Cambridge">Cambridge</option>
+										<option value="Waterloo">Waterloo</option>										
+										<option value="Niagara Falls">Niagara Falls</option>										
+										<option value="Barrie">Barrie</option>
+										<option value = "St.Jacobs">St. Jacobs </option>
+										<option value = "Sudbury">Sudbury </option>	
+									</select>
+									<br>
+									<br>
+										<label> TO (Destination)</label>
+										<select>
+										<option selected>&nbsp;</option>
+										<option value="Toronto">Toronto</option>										
+										<option value="Mississauga">Mississauga</option>				
+										<option value="Ottawa">Ottawa</option>
+										<option value="Burlington">Burlington</option>
+										<option value="St.Catharines">St. Catharines</option>
+										<option value="Stratfor">Stratford</option>
+										<option value="Hamilton">Hamilton</option>									
+										<option value="London">London</option>
+										<option value="Vaughan">Vaughan</option>
+										<option value="Windsor">Windsor</option>										
+										<option value="Brampton">Brampton</option>										
+										<option value="Markham">Markham</option>
+										<option value="Kitchener">Kitchener</option>
+										<option value="Guelph">Guelph</option>					
+										<option value="Cambridge">Cambridge</option>
+										<option value="Waterloo">Waterloo</option>										
+										<option value="Niagara Falls">Niagara Falls</option>										
+										<option value="Barrie">Barrie</option>
+										<option value = "St.Jacobs">St. Jacobs </option>
+										<option value = "Sudbury">Sudbury </option>	
+										</select>
+										<br>
+										<br>									
+									<label>Select the first stop</label>
+									<select id = "stop1">
+										<option selected>None</option>
+										<option value="Toronto">Toronto</option>										
+										<option value="Mississauga">Mississauga</option>				
+										<option value="Ottawa">Ottawa</option>
+										<option value="Burlington">Burlington</option>
+										<option value="St.Catharines">St. Catharines</option>
+										<option value="Stratfor">Stratford</option>
+										<option value="Hamilton">Hamilton</option>									
+										<option value="London">London</option>
+										<option value="Vaughan">Vaughan</option>
+										<option value="Windsor">Windsor</option>										
+										<option value="Brampton">Brampton</option>										
+										<option value="Markham">Markham</option>
+										<option value="Kitchener">Kitchener</option>
+										<option value="Guelph">Guelph</option>					
+										<option value="Cambridge">Cambridge</option>
+										<option value="Waterloo">Waterloo</option>										
+										<option value="Niagara Falls">Niagara Falls</option>										
+										<option value="Barrie">Barrie</option>
+										<option value = "St.Jacobs">St. Jacobs </option>
+										<option value = "Sudbury">Sudbury </option>	
+										</select>
+										<br>
+										<br>
+										<label>Select the second stop </label>
+										<select id = "stop2">
+										<option selected>&nbsp;None</option>
+										<option value="Toronto">Toronto</option>										
+										<option value="Mississauga">Mississauga</option>				
+										<option value="Ottawa">Ottawa</option>
+										<option value="Burlington">Burlington</option>
+										<option value="St.Catharines">St. Catharines</option>
+										<option value="Stratfor">Stratford</option>
+										<option value="Hamilton">Hamilton</option>									
+										<option value="London">London</option>
+										<option value="Vaughan">Vaughan</option>
+										<option value="Windsor">Windsor</option>										
+										<option value="Brampton">Brampton</option>										
+										<option value="Markham">Markham</option>
+										<option value="Kitchener">Kitchener</option>
+										<option value="Guelph">Guelph</option>					
+										<option value="Cambridge">Cambridge</option>
+										<option value="Waterloo">Waterloo</option>										
+										<option value="Niagara Falls">Niagara Falls</option>										
+										<option value="Barrie">Barrie</option>
+										<option value = "St.Jacobs">St. Jacobs </option>
+										<option value = "Sudbury">Sudbury </option>	
+										</select>
+										<br>
+										<br>
+										<label>Select the third stop </label>
+										<select id = "stop3">
+										<option selected>None</option>
+										<option value="Toronto">Toronto</option>										
+										<option value="Mississauga">Mississauga</option>				
+										<option value="Ottawa">Ottawa</option>
+										<option value="Burlington">Burlington</option>
+										<option value="St.Catharines">St. Catharines</option>
+										<option value="Stratfor">Stratford</option>
+										<option value="Hamilton">Hamilton</option>									
+										<option value="London">London</option>
+										<option value="Vaughan">Vaughan</option>
+										<option value="Windsor">Windsor</option>										
+										<option value="Brampton">Brampton</option>										
+										<option value="Markham">Markham</option>
+										<option value="Kitchener">Kitchener</option>
+										<option value="Guelph">Guelph</option>					
+										<option value="Cambridge">Cambridge</option>
+										<option value="Waterloo">Waterloo</option>										
+										<option value="Niagara Falls">Niagara Falls</option>										
+										<option value="Barrie">Barrie</option>
+										<option value = "St.Jacobs">St. Jacobs </option>
+										<option value = "Sudbury">Sudbury </option>	
+										</select>
+										
+									<br>	
+									<br>
+									<label>Number of seats available</label>
+									<input type = "number" id = "noofseats" required />
+									<br>
+									<label>Type of car </label>
+									<input type = "text" id = "cartype" required />
+									<br>
+									<label>Amount (CAD)/Stop</label>
+									<input type = "number" id = "amount" required />
+								
+							</div>	
+							
+									
+							<div class="modal-footer">
+							<input type="submit" class = "btn medium" style= "margin-left:37%;"	/>
+							</div>
+							</form>
+							</div>
+						
+						
+					</div> 
+					<div id="myModal1" class = "modal">
+					
+						<div class = "modal-content" >
+								<div  class = "modal-header" style= "text-align:center;">
+								 <span class="close">&times;</span>
+									<h3 style ="padding-top:10px;">PROFILE DETAILS</h3>
+								</div>			
+								<div class="modal-body">
+								<label>Your Email</label>
+								<input type = "email" readonly />
+								<br>
+								<label> Your Full name </label>
+								<input type = "text" readonly />
+								<br>
+								<label> Your Phone number</label>
+								<input type = "text" readonly />
+							<div class="modal-footer">
+							
+							</div>
+								
+						</div>
+						</div>
+						
+					</div>
+					<div id="myModal2" class = "modal">
+					
+						<div class = "modal-content" >
+						<form>
+								<div  class = "modal-header" style= "text-align:center;">
+								 <span class="close">&times;</span>
+									<h3 style ="padding-top:10px;">EDIT PROFILE DETAILS</h3>
+								</div>			
+								<div class="modal-body">
+								<label>Your Email</label>
+								<input type = "email"  />
+								<br>
+								<label> Your Full name </label>
+								<input type = "text"  />
+								<br>
+								<label> Your Phone number</label>
+								<input type = "text" />
+								
+							<div class="modal-footer">
+							<input type="submit" class = "btn medium" style= "margin-left:37%;" value = "Save Updates"	/>
+							</div>
+								
+						</div>
+						</form>
+						</div>
+						
+					</div>
+				<div id="myModal3" class = "modal">
+					
+						<div class = "modal-content" >
+								<div  class = "modal-header" style= "text-align:center;">
+								 <span class="close">&times;</span>
+									<h3 style ="padding-top:10px;">CHANGE PASSWORD</h3>
+								</div>			
+								<div class="modal-body">
+								<form>
+								<label>Your Previous Password</label>
+								<input type = "password" required />
+								<br>
+								<label> Your New Password</label>
+								<input type = "password" required />
+								<br>
+								<label> Repeat New Password</label>
+								<input type = "password" required />
+								
+							<div class="modal-footer">
+							<input type="submit" class = "btn medium" style= "margin-left:37%;" value = "Save Updates"	/>
+							</div>
+							</form>	
+						</div>
+						</div>
+						
+					</div>	
+					
+				<div class="three-fourth content">
+				</div>
+				<!--- //Content -->
+				
+				<!--- Sidebar -->
+				<aside class="one-fourth sidebar right">
+					<!-- Widget -->
+					<div class="widget">
+						<ul class="categories">
+							<li class="active"><a>Hey, Would you like to?</a></li>
+							<li><a id = "myBtn" style="cursor: pointer;">Offer a Ride</a></li>
+							<li><a id = "myBtn1" style = "cursor:pointer;">View Profile</a></li>
+							<li><a id = "myBtn2" style = "cursor:pointer;">Edit Profile</a></li>
+							<li><a id = "myBtn3" style = "cursor:pointer;">Change Password</a></li>
+							<li><a style = "cursor:pointer;">Logout</a></li>
+						</ul>
+					</div>
+					<!-- //Widget -->
+					
+					<!-- Widget -->
+					
+					<!-- //Widget -->
+					
+					<!-- Widget -->
+					<div class="widget">
+						<h4>Advertisment</h4>
+						<a href="#"><img src="http://placehold.it/800x600" alt="" /></a>
+					</div>
+					<!-- //Widget -->
+					
+					<!-- Widget -->
+					<div class="widget">
+						<h4>Having any issues?</h4>
+						<div class="textwidget">
+							<p>Call our customer services team on the number below to speak to one of our advisors who will help you with all of your needs.</p>
+							<p class="contact-data"><span class="ico phone black"></span> 519 781 3561</p>
+						</div>
+					</div>
+					<!-- //Widget -->
+				</aside>
+				<!--- //Sidebar -->
+			</div>
+		</div>
+	</main>
+	<!-- //Main -->
+	
+	<!-- Footer -->
+	<footer class="footer black" role="contentinfo">
+		<div class="wrap">
+			<div class="row">
+				<!-- Column -->
+				<article class="one-half">
+					<h6>About us</h6>
+					<p>We want to provide students and collegues a better, faster and more efficient form of transportation. So farewell to those long hours on the bus, it is time to get to your destination on time!</p>
+				</article>
+				<!-- //Column -->
+				
+				<!-- Column -->
+				<article class="one-fourth">
+					<h6>Need help?</h6>
+					<p>Contact us via phone or email:</p>
+					<p class="contact-data"><span class="ico phone"></span> +1 519 781 3561</p>
+					<p class="contact-data"><span class="ico email"></span> <a href="mailto:ttanaya@uwaterloo.ca">ttanaya@uwaterloo.ca</a></p>
+				</article>
+				<!-- //Column -->
+				
+				<!-- Column -->
+				<article class="one-fourth">
+					<h6>Follow us</h6>
+					<ul class="social">
+						<li class="facebook"><a href="#" title="facebook">facebook</a></li>
+						<li class="twitter"><a href="#" title="twitter">twitter</a></li>
+						
+					</ul>
+				</article>
+				<!-- //Column -->
+			</div>
+			
+			<div class="copy">
+				
+				
+				<nav role="navigation" class="foot-nav">
+					<ul>
+						<li><a href="#" title="Home">Home</a></li>
+						<li><a href="#" title="Blog">Blog</a></li>
+						<li><a href="#" title="About us">About us</a></li>
+						<li><a href="#" title="Contact us">Contact us</a></li>
+						<li><a href="#" title="Terms of use">Terms of use</a></li>
+						<li><a href="#" title="Help">Help</a></li>
+						<li><a href="#" title="For partners">For partners</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</footer>
+	<!-- //Footer -->
+	
+	<!-- Preloader -->
+	<div class="preloader">
+		<div id="followingBallsG">
+			<div id="followingBallsG_1" class="followingBallsG"></div>
+			<div id="followingBallsG_2" class="followingBallsG"></div>
+			<div id="followingBallsG_3" class="followingBallsG"></div>
+			<div id="followingBallsG_4" class="followingBallsG"></div>
+		</div>
+	</div>
+	<!-- //Preloader -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+	<script src="js/jquery.uniform.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src = "js/jquery.js"></script>
+	<script src = "js/jquery-ui.js"></script>
+	<script type = "text/javascript">
+	
+// Get the modal
+var modal = document.getElementById('myModal');
+var modal1 = document.getElementById('myModal1');
+var modal2 = document.getElementById('myModal2');
+var modal3 = document.getElementById('myModal3');
+// Get the button that opens the modal
+var btn = document.getElementById('myBtn');
+var btn1 = document.getElementById('myBtn1');
+var btn2 = document.getElementById('myBtn2');
+var btn3 = document.getElementById('myBtn3');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var span1 = document.getElementsByClassName("close")[1];
+var span2 = document.getElementsByClassName("close")[2];
+var span3 = document.getElementsByClassName("close")[3];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+modal.style.display = "block";
+}
+btn1.onclick = function() {
+modal1.style.display = "block";
+}
+btn2.onclick = function() {
+modal2.style.display = "block";
+}
+btn3.onclick = function () {
+modal3.style.display = "block";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {  
+modal.style.display = "none";	
+}
+span1.onclick = function() {
+modal1.style.display = "none";
+}
+span2.onclick = function () {
+modal2.style.display = "none"; 
+}
+span3.onclick = function () {
+modal3.style.display = "none"; 
+}
+window.onclick = function(event) {
+    if (event.target == modal1) {
+        modal1.style.display = "block";
+    }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "block";
+    }
+}
+
+</script>
+<script type="text/javascript">
+
+ $( "#datepicker" ).datepicker({minDate: 0});
+</script>
+<script>
+	$(document).ready(function(){
+   $('select').on('change', function(event ) {
+       //restore previously selected value
+       var prevValue = $(this).data('previous');
+       $('select').not(this).find('option[value="'+prevValue+'"]').show();
+       //hide option selected                
+       var value = $(this).val();
+       //update previously selected data
+       $(this).data('previous',value);
+       $('select').not(this).find('option[value="'+value+'"]').hide();
+   });
+});
+</script>
+  </body>
+</html>
