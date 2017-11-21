@@ -5,9 +5,8 @@
  */
 package UWRideshare.servlets;
 
-import UWRideshare.services.UserMaintenanceServices;
+import UWRideshare.services.ManageProfileServices;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,23 +17,28 @@ import javax.servlet.http.HttpSession;
  *
  * @author avibhullar
  */
-public class VerifyServlet extends HttpServlet {
+public class ResetPasswordServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession s=req.getSession(false);
-        String email=(String)s.getAttribute("email");
-       String email1=(String)s.getAttribute("email1");
-       if(email==null)
-           email=email1;
-        if(UserMaintenanceServices.verifyAccount(email))
+        try
         {
-            s.invalidate();
-            resp.sendRedirect("Login.jsp");
+            HttpSession s=req.getSession(false);
+            String email=(String)s.getAttribute("email");
+            String pwd=req.getParameter("textnewpassword");
+            if(ManageProfileServices.resetPassword(email, pwd))
+            {
+                s.invalidate();
+                resp.sendRedirect("Login.jsp?msg=Reset Password Successful");
+            }
+            else
+            {   s.invalidate();
+                resp.sendRedirect("Login.jsp?msg=Reset Password Failed");
+            }
         }
-        else
+        catch(Exception e)
         {
-            resp.sendRedirect("VerificationPage.jsp?msg=Error");
+            System.out.println(e);
         }
     }
 
@@ -42,9 +46,6 @@ public class VerifyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
     }
-
-
-    }
-
-   
     
+
+}

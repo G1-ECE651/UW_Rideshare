@@ -8,7 +8,6 @@ package UWRideshare.servlets;
 import UWRideshare.beans.DriverBean;
 import UWRideshare.services.SignUpServices;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,12 +22,12 @@ public class SignUpServlet extends HttpServlet {
    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     try {
+            
             DriverBean objbean = new DriverBean();
             objbean.setEmail(req.getParameter("textemail"));
             objbean.setName(req.getParameter("textname"));
             objbean.setPassword(req.getParameter("textpassword"));
             objbean.setContact(req.getParameter("textmobile"));
-       //     objbean.setType("User");
             objbean.setStatus(true);
             objbean.setSignup("Email");
             objbean.setVerified(false);
@@ -36,8 +35,8 @@ public class SignUpServlet extends HttpServlet {
             if(SignUpServices.addUser(objbean))
             {
                 HttpSession s=req.getSession();
-                s.setAttribute("email", req.getParameter("textemail"));
-               resp.sendRedirect("index.html");
+                s.setAttribute("email",objbean.getEmail());
+                resp.sendRedirect("VerificationPage.jsp");
             }
             else
             {

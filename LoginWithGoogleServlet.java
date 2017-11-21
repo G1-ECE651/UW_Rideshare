@@ -8,6 +8,7 @@ package UWRideshare.servlets;
 import UWRideshare.services.UserMaintenanceServices;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,33 +19,28 @@ import javax.servlet.http.HttpSession;
  *
  * @author avibhullar
  */
-public class VerifyServlet extends HttpServlet {
+public class LoginWithGoogleServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession s=req.getSession(false);
-        String email=(String)s.getAttribute("email");
-       String email1=(String)s.getAttribute("email1");
-       if(email==null)
-           email=email1;
-        if(UserMaintenanceServices.verifyAccount(email))
-        {
-            s.invalidate();
-            resp.sendRedirect("Login.jsp");
-        }
-        else
-        {
-            resp.sendRedirect("VerificationPage.jsp?msg=Error");
-        }
-    }
+           String  email =req.getParameter("email");
+      int userid=UserMaintenanceServices.getUserid(email);
+      if(userid!=-1)
+      {
+                        HttpSession s1 = req.getSession();
+                        s1.setAttribute("userid", userid);
+                        s1.setAttribute("email", email);
+                        RequestDispatcher rd = req.getRequestDispatcher("DriverPanel.jsp");
+                        rd.forward(req, resp);
+      }
+      else
+      {
+          
+      }    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
+        super.doPost(req, resp); //To change body of generated methods, choose Tools | Templates.
     }
 
-
-    }
-
-   
-    
+}

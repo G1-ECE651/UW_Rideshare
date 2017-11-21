@@ -25,12 +25,17 @@ public class EmailOTPServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             try {
             HttpSession s = req.getSession(false);
+           
             if (s != null) {
                 String email = (String) s.getAttribute("email");
-                if (!(SignUpServices.checkEmail(email))) {
+              String email1=(String)s.getAttribute("email1");
+              if(email==null)
+                  email=email1;
+              
+                  if ((SignUpServices.checkEmail(email))) {
                     int otp = OTPServices.otpGenerator();
-                    System.out.println("otp is @@@@@@@@@@@@@@@@@@");
-                    String msg = SendMail.sendMail(email, "Your OTP For Password Recovery Is:" + otp, "Password Recovery");
+                    
+                    String msg = SendMail.sendMail(email, "Your OTP  Is:" + otp, "Verification");
                     if (msg.equalsIgnoreCase("sent")) {
                         resp.getWriter().write(""+otp);
                     } else {
@@ -39,10 +44,15 @@ public class EmailOTPServlet extends HttpServlet {
                 } else {
                     resp.getWriter().write("Not Registered");
                 }
+              
+             
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-
+@Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doGet(req, resp); //To change body of generated methods, choose Tools | Templates.
+    }
 }
