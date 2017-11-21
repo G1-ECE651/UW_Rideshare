@@ -1,9 +1,10 @@
+package UWRideshare.servlets;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UWRideshare.servlets;
 
 import UWRideshare.services.SignUpServices;
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class CheckEmailServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-          String email=req.getParameter("email");
+       String email=req.getParameter("email");
        if(SignUpServices.checkEmail(email))
        {
           resp.getWriter().write("true");
@@ -34,9 +35,8 @@ public class CheckEmailServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
+        super.doGet(req, resp); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
-
+    
 }
