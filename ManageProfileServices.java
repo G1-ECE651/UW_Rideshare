@@ -54,15 +54,17 @@ public class ManageProfileServices {
     }
     
     
-    public static boolean editContact (DriverBean objbean)
+    public static boolean editProfile (String name,String contact,int userid)
     {
          Connection conn = null;
         PreparedStatement pstmt = null;
         try {
             conn = DBConnection.connect();
-            pstmt = conn.prepareStatement("update drivermaster set contact=? where userid=?");
-            pstmt.setString(1, objbean.getContact());
-            pstmt.setInt(2, objbean.getUserid());
+            pstmt = conn.prepareStatement("update drivermaster set contact=?, name=? where userid=?");
+            pstmt.setString(1, contact);
+            pstmt.setString(2, name);
+
+            pstmt.setInt(3, userid);
             int a = pstmt.executeUpdate();
             if (a > 0) {
                 return true;
@@ -80,20 +82,49 @@ public class ManageProfileServices {
         return false;
     }
     
-    public static String getFeedback(int userid)
+    
+    public static boolean addContact (String contact,String email)
+    {
+         Connection conn = null;
+        PreparedStatement pstmt = null;
+        try {
+            conn = DBConnection.connect();
+            pstmt = conn.prepareStatement("update drivermaster set contact=? where email=?");
+            pstmt.setString(1, contact);
+            pstmt.setString(2, email);
+            
+            int a = pstmt.executeUpdate();
+            if (a > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            try {
+                pstmt.close();
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return false;
+    }
+    
+    
+    public static String getPassword(String email)
     {
         Connection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-       String feedback = null;
+       String pwd = null;
         try {
             conn = DBConnection.connect();
-            pstmt = conn.prepareStatement("select feedback from drivermaster where userid=?");
-            pstmt.setInt(1, userid);
+            pstmt = conn.prepareStatement("select password from drivermaster where email=?");
+            pstmt.setString(1, email);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                feedback=rs.getString("feedback");
-                return feedback;
+                pwd=rs.getString("password");
+                return pwd;
             }
 
         } catch (Exception e) {
@@ -107,7 +138,7 @@ public class ManageProfileServices {
                 System.out.println(e);
             }
         }
-        return feedback;
+        return pwd;
     }
     
     public static String changePassword(String oldpwd, String newpwd,int userid) {
