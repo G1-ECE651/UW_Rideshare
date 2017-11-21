@@ -32,19 +32,15 @@ public class AddRideServlet extends HttpServlet {
         String datetime;
              if(s!=null)
           {
-              System.out.println("addrideservlet");
               RideBean objbean=new RideBean();
               int userid=(int)s.getAttribute("userid");
-              System.out.println("userid"+userid);
               objbean.setSource(req.getParameter("textsource"));
               String stop1=req.getParameter("stop1");
               String stop2=req.getParameter("stop2");
               String stop3=req.getParameter("stop3");
-              System.out.println(objbean.getSource());
               objbean.setDestination(req.getParameter("textdestination"));
               objbean.setCarname(req.getParameter("textcartype"));
               objbean.setSeats(Integer.parseInt(req.getParameter("textseats")));
-             // String path1=req.getParameter("textpath");
               
               String path1="";
               boolean flag1,flag2,flag3;
