@@ -10,7 +10,7 @@ package UWRideshare.services;
  * @author avibhullar
  */
 public class OTPServices {
-        public static int otpGenerator()
+     public static int otpGenerator()
     {
         int otp;
         while(true)

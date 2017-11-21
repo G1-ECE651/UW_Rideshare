@@ -8,6 +8,7 @@ package UWRideshare.services;
 import UWRideshare.db.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -39,4 +40,34 @@ public class UserMaintenanceServices {
         }
         return false;
   }
+     
+     public static int getUserid(String email)
+    {
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+       int userid = -1;
+        try {
+            conn = DBConnection.connect();
+            pstmt = conn.prepareStatement("select userid from drivermaster where email=?");
+            pstmt.setString(1, email);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                userid=rs.getInt("userid");
+                return userid;
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            try {
+                rs.close();
+                pstmt.close();
+                conn.close();
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+        return userid;
+    }
 }
