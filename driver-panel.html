@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="css/animate.css" />	
 	<link rel ="stylesheet" href = "css/jquery-ui.css"/>
 	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-	<link rel= "stylesheet" href = "modal.css">
+	<link rel= "stylesheet" href = "css/modal.css">
 	
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:400,500,600,700|Montserrat:400,700">
 	
@@ -333,6 +333,7 @@
 					</div>	
 					
 				<div class="three-fourth content">
+				<div  style = "padding-top:1px;"id="map" class = "gmap1"></div>
 				</div>
 				<!--- //Content -->
 				
@@ -346,6 +347,7 @@
 							<li><a id = "myBtn1" style = "cursor:pointer;">View Profile</a></li>
 							<li><a id = "myBtn2" style = "cursor:pointer;">Edit Profile</a></li>
 							<li><a id = "myBtn3" style = "cursor:pointer;">Change Password</a></li>
+							<li><a style = "cursor:pointer;">View Previous Rides</a></li>
 							<li><a style = "cursor:pointer;">Logout</a></li>
 						</ul>
 					</div>
@@ -356,10 +358,7 @@
 					<!-- //Widget -->
 					
 					<!-- Widget -->
-					<div class="widget">
-						<h4>Advertisment</h4>
-						<a href="#"><img src="http://placehold.it/800x600" alt="" /></a>
-					</div>
+					
 					<!-- //Widget -->
 					
 					<!-- Widget -->
@@ -415,13 +414,10 @@
 				
 				<nav role="navigation" class="foot-nav">
 					<ul>
-						<li><a href="#" title="Home">Home</a></li>
-						<li><a href="#" title="Blog">Blog</a></li>
-						<li><a href="#" title="About us">About us</a></li>
-						<li><a href="#" title="Contact us">Contact us</a></li>
-						<li><a href="#" title="Terms of use">Terms of use</a></li>
-						<li><a href="#" title="Help">Help</a></li>
-						<li><a href="#" title="For partners">For partners</a></li>
+						<li><a href="index.html" title="Home">Home</a></li>
+						
+						<li><a href="contact.html" title="Contact us">Contact us</a></li>
+						
 					</ul>
 				</nav>
 			</div>
@@ -525,5 +521,50 @@ window.onclick = function(event) {
    });
 });
 </script>
+<script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNutTcDKVXE8OwFLN3idpuqZq7Vo3RTDI&callback=initMap">
+    </script>
   </body>
 </html>
